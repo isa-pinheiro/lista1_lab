@@ -64,7 +64,7 @@ int main(void) {
  ```
  
 ## QUESTÃO 04 -
-Sabendo que os argumentos da função "printf" podem ser expressões (a+b, a/b, a*b...), e não somente
+Sabendo que os argumentos da função "printf" podem ser expressões (a+b, a/b, a*b...) e não somente
 argumentos, faça um programa capaz de ler um valor inteiro X e escrever seu triplo, seu quadrado, e
 seu meio.
 
@@ -285,115 +285,282 @@ int main(void) {
  Sempre são descontados 10% de imposto de renda em cima do valor bruto.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int d;
+  printf("Insira a quantidade de dias trabalhados: ");
+  scanf("%d", &d);
+
+  if(d <= 10){
+    printf("Seu salário líquido final é: %.2f", 0.9 * 50.25 * d);
+  } else if(d <= 20){
+    printf("Seu salário líquido final é: %.2f", 0.9 * (1.2 * 50.25 * d));
+  } else if(d <= 30){
+    printf("Seu salário líquido final é %.2f", 0.9 * (1.3 * 50.25 * d));
+  } else{
+    printf("Quantidade de dias inválida");
+  }
+  return 0;
+}
  ```
  
  ## QUESTÃO 16 -
- Desenvolva um programa que calcule o salario liquido de um professor. Para elaborar o programa,  ́e
-necess ́ario possuir alguns dados, tais como o valor da hora aula, n ́umero de horas trabalhadas no mˆes e
-percentual de desconto do INSS. Em primeiro lugar, deve-se estabelecer o seu sal ́ario bruto para fazer
-o desconto e ter o valor do salario liquido. Obs.: o programa deve informar o salario bruto e salario
-liquido do professor.
+ Desenvolva um programa que calcule o salário líquido de um professor. Para elaborar o programa, é
+ necessário possuir alguns dados, tais como o valor da hora aula, número de horas trabalhadas no mês e
+ percentual de desconto do INSS. Em primeiro lugar, deve-se estabelecer o seu salário bruto para fazer
+ o desconto e ter o valor do salário líquido. 
+ Obs: o programa deve informar o salário bruto e salário líquido do professor.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  float ha, inss, ht;
+  printf("Insira o valor de hora aula: ");
+  scanf("%f ", &ha);
+  printf("Insira a quantidade de horas trabalhadas: ");
+  scanf("%f", &ht);
+  printf("Insira o percentual de desconto do issec sem o %%: ");
+  scanf("%f", &inss);
+
+  printf("O salário desse professor nesse mês foi: \nSálario bruto: %.2f \nSalário líquido: %.2f", ha * ht, ha * ht * (1 - inss/100));
+  return 0;
+}
  ```
  
  ## QUESTÃO 17 -
- Escrever um programa que receba um valor inteiro do usu ́ario e apresente o seu valor absoluto (m ́odulo).
-N ̃ao utilize estrutura de decis ̃ao if.
+ Escrever um programa que receba um valor inteiro do usuário e apresente o seu valor absoluto (módulo).
+ Não utilize estrutura de decisão if.
 
  ``` c
+ #include <stdio.h>
+ #include <stdlib.h>
 
+int main(void) {
+  int n;
+  printf("Insira um número inteiro: ");
+  scanf("%d", &n);
+
+  printf("O valor em módulo desse número é: %d", abs(n));
+  return 0;
+}
  ```
  
  ## QUESTÃO 18 -
- Escreva um programa que leia o raio de um c ́ırculo e imprima seu diˆametro, o valor de sua circunferˆencia
- e sua  ́area. Use o valor de 3,14159 para ”pi”. Faça cada um destes c ́alculos dentro da instru ̧c ̃oes (ou
+ Escreva um programa que leia o raio de um círculo e imprima seu diâmetro, o valor de sua circunferência
+ e sua área. Use o valor de 3,14159 para ”pi”. Faça cada um destes cálculos dentro da instruçãos (ou
  instruções) printf e use o especificador de conversão %f.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  float pi = 3.14159, r;
+  printf("Insira o raio do círculo: ");
+  scanf("%f", &r);
+
+  printf("\nA circunferência desse círculo é: %.2f \nA área desse círculo é: %.2f", 2 * pi * r, pi * r * r);
+
+  
+  return 0;
+}
  ```
  
  ## QUESTÃO 19 -
- Escreva um programa que imprima um retˆangulo, uma elipse, uma seta e um losango como se segue:
+ Escreva um programa que imprima um retângulo, uma elipse, uma seta e um losango.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  printf("******** \t\t   ***   \t\t   *   \t\t     *     \n");
+  printf("*      * \t\t  *   *  \t\t  ***  \t\t    * *    \n");
+  printf("*      * \t\t *     * \t\t ***** \t\t   *   *   \n");
+  printf("*      * \t\t *     * \t\t   *   \t\t  *     *  \n");
+  printf("*      * \t\t *     * \t\t   *   \t\t *       * \n");
+  printf("*      * \t\t *     * \t\t   *   \t\t  *     *  \n");
+  printf("*      * \t\t *     * \t\t   *   \t\t   *   *   \n");
+  printf("*      * \t\t *     * \t\t   *   \t\t    * *    \n");
+  printf("******** \t\t   ***   \t\t   *   \t\t     *     \n");
+  return 0;
+}
  ```
  
  ## QUESTÃO 20 -
- Escreva um programa que receba um n ́umero inteiro e ent ̃ao determine e imprima se ele  ́e par ou  ́ımpar.
-Obs.: N ̃ao utilizar estrutura de decis ̃ao if.
+ Escreva um programa que receba um número inteiro e então determine e imprima se ele é par ou ímpar.
+ Obs.: Não utilizar estrutura de decisão if.
+ 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int n;
+  printf("Insira um número inteiro: ");
+  scanf("%d", &n);
+
+  (n % 2) ? printf("Esse número é ímpar.") : printf("Esse número é par.");
+  return 0;
+}
  ```
  
  ## QUESTÃO 21 -
- Escreva um programa que leia dois inteiros e ent ̃ao determine e imprima se o primeiro  ́e m ́ultiplo do
-segundo. Obs.: N ̃ao utilizar estrutura de decis ̃ao if.
+ Escreva um programa que leia dois inteiros e então determine e imprima se o primeiro é múltiplo do segundo. 
+ Obs.: Não utilizar estrutura de decisão if.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int x, y;
+  printf("Insira dois inteiros: ");
+  scanf("%d %d", &x, &y);
+
+  (x % y) ? printf("Não é múltiplo") : printf("É múltiplo");
+  return 0;
+}
  ```
  
  ## QUESTÃO 22 -
- A linguagem C pode representar letras mai ́usculas, letras min ́usculas e uma grande variedade de
-s ́ımbolos especiais. O C usa internamente pequenos inteiros para representar cada caractere diferente.
+ A linguagem C pode representar letras maiúsculas, letras minúsculas e uma grande variedade de
+ símbolos especiais. O C usa internamente pequenos inteiros para representar cada caractere diferente.
+ O conjunto de caracteres que um computador utiliza e as representações dos números inteiros correspondentes
+ àqueles caracteres é chamado conjunto de caracteres do computador. 
+ Você pode imprimir o número inteiro equivalente à letra maiúscula A, por exemplo, executando a instrução:
 
-O conjunto de caracteres que um computador utiliza e as representa ̧c ̃oes dos n ́umeros inteiros corres-
-pondentes `aqueles caracteres  ́e chamado conjunto de caracteres do computador. Vocˆe pode imprimir
-
-o n ́umero inteiro equivalente `a letra mai ́uscula A, por exemplo, executando a instru ̧c ̃ao
-
-printf(”%d”, ’A’);
-
-Escreva um programa em C que imprima os inteiros equivalentes a algumas letras mai ́usculas, letras
-min ́usculas e s ́ımbolos especiais. No m ́ınimo, determine os n ́umeros inteiros equivalentes ao conjunto
-seguinte: A BCabc 0 12 $ * + / e o caractere espa ̧co em branco.
+                                         printf(”%d”, ’A’);
+ 
+ Escreva um programa em C que imprima os inteiros equivalentes a algumas letras mai ́usculas, letras
+ minúsculas e s ́ımbolos especiais. No m ́ınimo, determine os n ́umeros inteiros equivalentes ao conjunto
+ seguinte: ABCabc012$*+/ e o caractere espaço em branco.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  printf("%d \n", 'A');
+  printf("%d \n", 'a');
+  printf("%d \n", 'B');
+  printf("%d \n", 'b');
+  printf("%d \n", 'C');
+  printf("%d \n", 'c');
+  printf("%d \n", ' ');
+  printf("%d \n", '0');
+  printf("%d \n", '1');
+  printf("%d \n", '2');
+  printf("%d \n", '$');
+  printf("%d \n", '*');
+  printf("%d \n", '+');
+  printf("%d \n", '/');
+  
+  return 0;
+}
  ```
  
  ## QUESTÃO 23 -
- Escreva um programa que receba a entrada de um n ́umero de trˆes d ́ıgitos, separe o n ́umero em seus
-d ́ıgitos componentes e reconstrua um n ́umero com os componentes na ordem inversa. Exemplo: para
-entrada de 123, a resposta do programa seria 321.
+ Escreva um programa que receba a entrada de um número de três dígitos, separe o número em seus
+ dígitos componentes e reconstrua um número com os componentes na ordem inversa. 
+ Exemplo: para entrada de 123, a resposta do programa seria 321.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int n;
+  printf("Insira um número de 3 dígitos: ");
+  scanf("%d", &n);
+  int i1, i2, i3;
+  i1 = n % 10;
+  i2 = (n % 100)/10;
+  i3 = n/100;
+  printf("%d%d%d", i1, i2, i3);
+  return 0;
+}
  ```
  
  ## QUESTÃO 24 -
  Escreva um programa que calcule o produto entre um valor dado x por 2 elevado a um valor dado n.
-Obs.: Utilize operadores bin ́arios.
+ Obs: Utilize operadores binários.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int x = 1, n;
+  printf("Insira o valor de n: ");
+  scanf("%d", &n);
+
+  for(int i = 1; i <= n; i++){
+    x = x * 2;
+  }
+  
+  printf("O valor de x é: %d", x);
+  return 0;
+} 
  ```
  
  ## QUESTÃO 25 -
  Escreva um programa que leia um tempo em segundos e imprima quantas horas, minutos e segundos
-h ́a neste tempo.
+ há neste tempo.
 
  ``` c
+ #include <stdio.h>
 
+int main(void) {
+  int s;
+  printf("Insira os segundos: ");
+  scanf("%d", &s);
+  int h, min, seg;
+  h = s / 3600;
+  min = (s % 3600)/60;
+  seg = s % 60;
+  printf("%d horas %d minutos e %d segundos", h, min, seg);
+  return 0;
+}
  ```
  
  ## QUESTÃO 26 -
- 26. Fazer um programa para ler as coordenadas x e y de dois pontos e calcular a distˆancia entre os dois
-pontos no plano. (Utilize a fun ̧c ̃ao sqrt (numero), biblioteca math.h).
+ Fazer um programa para ler as coordenadas x e y de dois pontos e calcular a distância entre os dois
+ pontos no plano. 
+ (Utilize a função sqrt (numero), biblioteca math.h).
 
  ``` c
+#include <stdio.h>
+#include <math.h>
 
+int main(void) {
+  float x1, x2, y1, y2;
+  printf("Insira a primeira coordenada no formato x,y: ");
+  scanf("%f,%f", &x1, &y1);
+  printf("Insira a segunda coordenada no formato x,y: ");
+  scanf("%f,%f", &x2, &y2);
+
+  float d;
+  d = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+  printf("A distância entre os pontos é: %f", d);
+  return 0;
+}
  ```
  
  ## QUESTÃO 27 -
- Escreva um programa que solicite 3 n ́umeros em ponto flutuante e imprima a m ́edia aritm ́etica e
-geom ́etrica. (Utilize a fun ̧c ̃ao pow(base, expoente) da biblioteca math.h).
+ Escreva um programa que solicite 3 números em ponto flutuante e imprima a média aritmética e
+ geométrica. 
+ (Utilize a função pow(base, expoente) da biblioteca math.h).
 
  ``` c
+ #include <stdio.h>
+#include <math.h>
 
+int main(void) {
+  float a, b, c;
+  printf("Insira três números reais: ");
+  scanf("%f %f %f", &a, &b, &c);
+
+  float ma, mg;
+  ma = (a + b + c)/3;
+  mg = pow(a*b*c, 1.0/3.0);
+  printf("A média aritmética é: %f \nA média geométrica é: %f", ma, mg);
+  return 0;
+}
  ```
